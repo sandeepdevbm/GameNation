@@ -25,8 +25,6 @@ const { homepage, userSignup, userLogin, userSignout, userOtpLogin,
 
 let err = ""
 
-
-
 let YOUR_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID
 let YOUR_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN
 
