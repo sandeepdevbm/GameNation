@@ -1,0 +1,80 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Add Product Offer</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table datatable">
+        <thead>
+            
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Title</th>
+                <th scope="col">Category</th>
+                <th scope="col">Price</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.productTitle}}</td>
+                <td>{{this.Category.categoryName}}</td>
+                <td>{{this.price}}</td>
+                <td><img style="height: 80px;" src="/Pictures/product/{{this.img.[0]}}"></td>
+                {{#if this.oldPrice}}
+                <td>
+                   
+                    <a href="/admin/delete-productOffer/{{this._id}}" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete')">Delete</a>
+                </td>
+                {{else}}
+                <td>
+                    <div class="accordion " id="accordionExample" style="max-width: 250px;">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne{{this._id}}" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    Add Offer
+                                </button>
+                            </h2>
+                            <div id="collapseOne{{this._id}}" class="accordion-collapse collapse "
+                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <form action="/admin/productOffers/{{this._id}}" method="post">
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Enter offer percentage</label>
+                                            <div class="input-group has-validation">
+
+                                                <input type="text" name="persent" class="form-control" required>
+                                                <div class="invalid-feedback">Please enter offer .</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>
+
+<script src="/adminAssets/js/main.js"></script>

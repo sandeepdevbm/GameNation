@@ -1,0 +1,71 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Add Category Offer</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category</th>
+                <th scope="col">Offer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each category}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.categoryName}}</td>
+                {{#if this.product.catoffer }}
+                <td>
+                   
+                    <a href="/admin/delete-categoryOffer/{{this._id}}" class="btn btn-danger" style="width:15.5rem ;"
+                        onclick="return confirm('Are you sure you want to delete')">Remove Offer</a>
+                </td>
+                {{else}}
+                <td>
+                    <div class="accordion " id="accordionExample" style="max-width: 250px;">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapseOne{{this._id}}" aria-expanded="true"
+                                    aria-controls="collapseOne">
+                                    Add Offer
+                                </button>
+                            </h2>
+                            <div id="collapseOne{{this._id}}" class="accordion-collapse collapse "
+                                aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+
+                                    <form action="/admin/categoryOffers/{{this._id}}" method="post">
+                                        <div class="col-12">
+                                            <label for="yourUsername" class="form-label">Enter offer percentage</label>
+                                            <div class="input-group has-validation">
+
+                                                <input type="text" name="persent" class="form-control" required>
+                                                <div class="invalid-feedback">Please enter your mobile number.</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <button class="btn btn-primary w-100" type="submit">Add</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </td>
+                {{/if}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>

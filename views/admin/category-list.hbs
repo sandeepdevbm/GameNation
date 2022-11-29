@@ -1,0 +1,35 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Product Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Category Name</th>
+                <th scope="col">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each category}}
+            <tr>
+                <th scope="row">1</th>
+                <td>{{this.categoryName}}</td>
+                <td>
+                    <a href="/admin/edit-category/{{this._id}}" class="btn btn-primary">Edit</a>
+                    <a href="/admin/delete-category/{{this._id}}" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{this.productTitle}}')">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>

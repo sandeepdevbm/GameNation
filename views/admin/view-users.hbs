@@ -1,0 +1,87 @@
+{{!-- <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Dashboard - NiceAdmin Bootstrap Template</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+<!-- Favicons -->
+<link href="/adminAssets/img/favicon.png" rel="icon">
+<link href="/adminAssets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+<!-- Google Fonts -->
+<link href="https://fonts.gstatic.com" rel="preconnect">
+<link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+<!-- Vendor CSS Files -->
+<link href="/adminAssets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/adminAssets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/adminAssets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/adminAssets/vendor/quill/quill.snow.css" rel="stylesheet">
+<link href="/adminAssets/vendor/quill/quill.bubble.css" rel="stylesheet">
+<link href="/adminAssets/vendor/remixicon/remixicon.css" rel="stylesheet">
+<link href="/adminAssets/vendor/simple-datatables/style.css" rel="stylesheet">
+
+<!-- Template Main CSS File -->
+<link href="/adminAssets/css/style.css" rel="stylesheet"> --}}
+
+<!-- ======= Header ======= -->
+
+
+<!-- ======= Sidebar ======= -->
+
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>User Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Users</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table datatable ">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone No:</th>
+                <th scope="col">Block/Unblock</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each userss}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.email}}</td>
+                <td>{{this.phone}}</td>
+                <td>
+                    {{#if this.status}}
+                    <a href="/admin/block/{{this._id}}"  class="btn btn-primary">Block</a>
+                    {{else}}
+                    <a href="/admin/unblock/{{this._id}}" class="btn btn-danger">Unblock</a></td>
+                    {{/if}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>
+ {{!-- <script src="/adminAssets/vendor/apexcharts/apexcharts.min.js"></script>
+  <script src="/adminAssets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/adminAssets/vendor/chart.js/chart.min.js"></script>
+  <script src="/adminAssets/vendor/echarts/echarts.min.js"></script>
+  <script src="/adminAssets/vendor/quill/quill.min.js"></script>
+  <script src="/adminAssets/vendor/simple-datatables/simple-datatables.js"></script>
+  <script src="/adminAssets/vendor/tinymce/tinymce.min.js"></script>
+  <script src="/adminAssets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="/adminAssets/js/main.js"></script> --}}
+  <script src="/adminAssets/js/main.js"></script>

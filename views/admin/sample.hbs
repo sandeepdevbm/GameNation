@@ -1,0 +1,142 @@
+<script>
+  var myChart;
+  var myChart2;
+  var myChart3
+  var chart1
+  var chart2
+  var chart3
+
+ window.onload = () => {
+ weeklyReport()
+ weeklyReportPayment()
+};
+
+
+
+function weeklyReport(){
+
+                        
+ chart1 = true;
+
+  const data = {
+    labels: [
+      {{#each dailysales}}'{{_id}}',{{/each}}
+      
+    ],
+    datasets: [{
+      label: 'Daily Sales',
+      data: [
+        {{#each dailysales}}'{{dailySales}}',{{/each}}
+        ],
+      backgroundColor: [
+        'rgb(103 119 239)',
+        'rgb(102 187 106)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 99, 132)'
+      ]
+    }]
+  };
+
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      aspectRatio:3,
+      responsive:true
+    }
+  };
+  if(chart2){
+    myChart2.destroy()
+  }
+  if(chart3){
+    myChart3.destroy()
+  }
+ 
+myChart = new Chart(document.getElementById('line-chart'), config)
+                                     
+} 
+
+
+
+function monthlyReport(){
+
+  chart2 = true;
+
+
+const data = {
+    labels: [
+      {{#each monthlysales}}'{{_id}}',{{/each}}
+    ],
+    datasets: [{
+      label: 'Monthly Sales',
+      data: [{{#each monthlysales}}'{{monthlySales}}',{{/each}}],
+      backgroundColor: [
+        'rgb(103 119 239)',
+        'rgb(102 187 106)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 99, 132)'
+      ]
+    }]
+  };
+  
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      aspectRatio:3,
+      responsive:true
+    }
+  }; 
+   if(chart1){
+    myChart.destroy()
+  }
+  if(chart3){
+    myChart3.destroy()
+  }         
+            
+myChart2 = new Chart(document.getElementById('line-chart'), config)
+
+                      
+} 
+
+function yearlyReport(){
+
+  chart3 = true;
+
+
+const data = {
+    labels: [
+      {{#each yearlysales}}'{{_id}}',{{/each}}
+    ],
+    datasets: [{
+      label: 'Yearly Sales',
+      data: [{{#each yearlysales}}'{{yearlySales}}',{{/each}}],
+      backgroundColor: [
+        'rgb(103 119 239)',
+        'rgb(102 187 106)',
+        'rgb(54, 162, 235)',
+        'rgb(255, 99, 132)'
+      ]
+    }]
+  };
+  
+  const config = {
+    type: 'line',
+    data: data,
+    options: {
+      aspectRatio:3,
+      responsive:true
+    }
+  }; 
+ if(chart2){
+    myChart2.destroy()
+  }
+  if(chart1){
+    myChart.destroy()
+  }  
+myChart3 = new Chart(document.getElementById('line-chart'), config)
+
+                      
+}
+
+</script>

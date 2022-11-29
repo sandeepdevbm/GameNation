@@ -1,0 +1,38 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Product Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Coupon Name</th>
+                <th scope="col">Offer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each coupon}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.name}}</td>
+                <td>{{this.percentage}} %</td>
+                <td>
+                   
+                    <a href="/admin/delete-coupon/{{this._id}}" class="btn btn-danger"
+                        onclick="return confirm('Are you sure you want to delete')">Delete</a>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>
+

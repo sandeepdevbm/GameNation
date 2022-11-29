@@ -1,0 +1,49 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Order Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Date</th>
+                <th scope="col">Customer</th>
+                <th scope="col">Address</th>
+                <th scope="col">Mobile</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Payment</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each order}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.Date}}</td>
+                <td>{{this.deliveryDetails.Fname}}  {{this.deliveryDetails.Lname}}</td>
+                <td>{{this.deliveryDetails.address}}</td>
+                <td>{{this.deliveryDetails.phone}}</td>
+                <td>{{this.totalAmount}}</td>
+                <td>{{this.paymentMethod}}</td>
+                <td>
+                 
+                    <a href="/admin/view-order-product/{{this._id}}" class="btn btn-danger"
+                        >view Products</a>
+              
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>
+
+<script src="/adminAssets/js/main.js"></script>
+

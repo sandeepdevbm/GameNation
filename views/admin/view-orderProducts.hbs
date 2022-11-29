@@ -1,0 +1,85 @@
+<main id="main" class="main">
+
+    <div class="pagetitle">
+        <h1>Product Management</h1>
+        <nav>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                <li class="breadcrumb-item active">View Products</li>
+            </ol>
+        </nav>
+    </div><!-- End Page Title -->
+
+    <table class="table datatable">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Product Name</th>
+                <th scope="col">Product Image</th>
+                <th scope="col">Quantity</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            {{#each products}}
+            <tr>
+                <th scope="row"> {{inc @index}}</th>
+                <td>{{this.product.productTitle}}</td>
+                <td><img style="height: 80px;" src="/Pictures/product/{{this.product.img.[0]}}"></td>
+                <td>{{this.quantity}}</td>
+                <td>{{this.product.price}}</td>
+                <td>{{this.status}}</td>
+                <td>
+                   {{#if (isCancelled this.status)}}
+   
+                    {{else}}
+                    <select name="" onchange="updateStatus('{{this._id}}','{{this.product._id}}',event)" class="ms-3" >
+                        <option value="{{this.status}}" hidden>{{this.status}}</option>
+                        <option value="dispatched">Dispatched</option>
+                        <option value="canceled">Cancel</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="outForDelivery">Out for Delivery</option>
+                        <option value="delivered">Delivered</option>
+                    </select>
+                {{/if}}
+                </td>
+                {{!-- <td>{{this.status}}</td>
+                <td>
+                    <a href="" class="btn btn-danger"
+                        onclick="removeOrderProduct('{{this._id}}','{{this.product._id}}')">Cancel</a>
+                </td> --}}
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+
+</main>
+
+
+<script>
+    function updateStatus(orderId,proId,event){
+        datas = event.target.value
+        console.log(datas)
+        $.ajax({
+            url:'/admin/updateStatus',
+            method:'post',
+            data:{
+                orderId: orderId,
+                proId: proId,
+                status: datas
+            },
+            success:(response)=>{
+                console.log(response)
+                if(response.status){
+                    location.reload()
+                }
+            }
+        })
+    }
+</script>
+
+<script src="/adminAssets/js/main.js"></script>
+
+
